@@ -1,0 +1,30 @@
+<!-- Bootstrap HTML for running the unit tests. -->
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript">
+      window.logs = [];
+      console.log = function (message) {
+        window.logs.push(message);
+      };
+      console.warn = function (message) {
+        window.logs.push(message);
+      };
+      console.info = function (message) {
+        window.logs.push(message);
+      };
+      console.error = function (message) {
+        window.logs.push(message);
+      };
+    </script>
+    <script type="module">
+      import { loadPyodide } from "./pyodide.mjs";
+      window.loadPyodide = loadPyodide;
+      const py = await loadPyodide({});
+      await py.loadPackage("sqlglot")
+    </script>
+  </head>
+  <body>
+    <h1>Hello</h1>
+  </body>
+</html>
